@@ -5,8 +5,8 @@ import notes from './notes.js';
 const addNoteHandler = (request, h) => {
     const { title, tags, body } = request.payload;
     const id = nanoid(16);
-    const creatdAt = new Date().toISOString();
-    const updateAt = creatdAt;
+    const createdAt = new Date().toISOString();
+    const updateAt = createdAt;
 
     const newNote = {
         title, tags, body, id, createdAt, updatedAt,
