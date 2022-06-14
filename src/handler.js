@@ -6,7 +6,7 @@ const addNoteHandler = (request, h) => {
     const { title, tags, body } = request.payload;
     const id = nanoid(16);
     const createdAt = new Date().toISOString();
-    const updateAt = createdAt;
+    const updatedAt = createdAt;
 
     const newNote = {
         title, tags, body, id, createdAt, updatedAt,
@@ -18,13 +18,13 @@ const addNoteHandler = (request, h) => {
 
     if (isSucces) {
         const response = h.response({
-            status : 'succes',
+            status : 'success',
             message : 'Catatan berhasil ditambahkan',
             data : {
                 noteId : id,
             }
         });
-        response.code(200);
+        response.code(201);
         return response;
     }
     
@@ -103,7 +103,7 @@ const deleteNoteByIdHandler = (request, h) => {
     const index = notes.findIndex((note) => note.id === id);
 
     if (index !== -1) {
-        splice(index, 1);
+        notes.splice(index, 1);
         const response = h.response({
             status : 'success',
             message : 'Catatan berhasil dihapus',
